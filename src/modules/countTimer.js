@@ -4,7 +4,7 @@ const countTimer = () =>{
         timerMinutes = document.querySelector('#timer-minutes'),
         timerSeconds = document.querySelector('#timer-seconds');
 
-    let deadline = '12 July 2020';
+    let deadline = '12 March 2020';
 
 
     const getTimeRemaining = (deadline) => {
