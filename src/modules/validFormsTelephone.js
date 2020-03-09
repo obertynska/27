@@ -10,7 +10,7 @@ const validFormsTelephone = () =>{
 
     formTextInput.forEach((elem) => {
         elem.addEventListener('input', () => {
-            elem.value = elem.value.replace(/[^А-Яа-яЁё.!,]/, '');
+            elem.value = elem.value.replace(/[^А-Яа-яЁё]\s/, '');
         });
     });
 
