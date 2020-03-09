@@ -3,13 +3,13 @@ const sendForm = () => {
         loadMessage = 'Загрузка...',
         successMessage = 'Спасибо! Мы скоро с вами свяжемся!',
         forms = document.querySelectorAll('form'),
-        formTextInput = document.querySelectorAll('input[type=text]'),
-        phoneForm = document.querySelectorAll('.form-phone'),
+       // formTextInput = document.querySelectorAll('input[type=text]'),
+      //  phoneForm = document.querySelectorAll('.form-phone'),
         statusMessage = document.createElement('div');
 
     statusMessage.style.cssText = 'font-size: 2rem; color: #19b5fe;';
 
-    phoneForm.forEach((elem) => {
+    /*phoneForm.forEach((elem) => {
         elem.addEventListener('input', () => {
 
             let res = elem.value.match(/^\+?[0-9]*$/g);
@@ -18,14 +18,9 @@ const sendForm = () => {
                 elem.value = res.join(',');
             }
         });
-    });
+    });*/
 
-    formTextInput.forEach((elem) => {
-        elem.addEventListener('input', () => {
-            elem.value = elem.value.replace(/[^а-яА-я\s]/g, "");
-        });
-    });
-
+    
 
 
     forms.forEach((item) => {
@@ -41,9 +36,14 @@ const sendForm = () => {
           
             postData(body)
                 .then((response) => {
-                    statusMessage.textContent = successMessage;
+                   statusMessage.textContent = successMessage;
+                   setTimeout(()=>{
+                        statusMessage.textContent = "";
+                    }, 5000)
+                    
                     if (response.status !== 200) {
                         throw new Error('status is not 200');
+
                     }
 
                     let inputs = document.querySelectorAll('input');
@@ -53,6 +53,9 @@ const sendForm = () => {
                 })
                 .catch((error) => {
                     statusMessage.textContent = errorMessage;
+                    setTimeout(()=>{
+                        statusMessage.textContent = "";
+                    }, 5000)
                     console.log(error);
                 });
             /*
