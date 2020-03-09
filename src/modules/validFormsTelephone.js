@@ -1,11 +1,22 @@
 const validFormsTelephone = () =>{
-    let calcInput = document.querySelectorAll("input[type='number']");
+    let phoneInput = document.querySelectorAll("input[type='tel']"),
+    formTextInput = document.querySelectorAll('input[type=text]');
 
-    calcInput.forEach((elem) => {
+    phoneInput.forEach((elem) => {
          elem.addEventListener('input', ()=>{
-            calcInput.value = calcInput.value.replace(/[^0-9+]/, '');
+            elem.value = elem.value.replace(/[^0-9+]/, '');
          });
     });
+
+    formTextInput.forEach((elem) => {
+        elem.addEventListener('input', () => {
+            elem.value = elem.value.replace(/[^А-Яа-яЁё.!,]/, '');
+        });
+    });
+
+
 };
+
+
 
 export default validFormsTelephone;
